@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -12,7 +14,7 @@ export default class MainView extends React.Component {
       movies: [
         { _id: 1, Title: 'Silence of the Lambs', Description: 'A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.', ImagePath: imgPath + 'Silence.jpg', Genre:'Thriller', Director:'Jonathan Demme'},
         { _id: 2, Title: '40 Year Old Virgin', Description: 'Goaded by his buddies, a nerdy guy whos never done the deed only finds the pressure mounting when he meets a single mother.', ImagePath: imgPath + '40Year.jpg', Genre:'Comedy', Director:'Judd Apatow'},
-        { _id: 3, Title: 'Catch Me If You Can', Description: 'An orphaned boy enrolls in a school of wizBarely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.', ImagePath: imgPath + 'CatchMe.jpg', Genre:'Biography', Director:'Steven Spielberg'}
+        { _id: 3, Title: 'Catch Me If You Can', Description: 'Barely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.', ImagePath: imgPath + 'CatchMe.jpg', Genre:'Biography', Director:'Steven Spielberg'}
       ],
       selectedMovie: null
     }

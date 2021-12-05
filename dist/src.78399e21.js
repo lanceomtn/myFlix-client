@@ -29793,7 +29793,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, {
         _id: 3,
         Title: 'Catch Me If You Can',
-        Description: 'An orphaned boy enrolls in a school of wizBarely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.',
+        Description: 'Barely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.',
         ImagePath: imgPath + 'CatchMe.jpg',
         Genre: 'Biography',
         Director: 'Steven Spielberg'
@@ -30005,7 +30005,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58896" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57520" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
