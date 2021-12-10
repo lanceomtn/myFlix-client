@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import { Navbar, Nav, Form, Button, Card, Container } from 'react-bootstrap';
+
+import './login-view.scss';
+import '../button/button.scss';
+
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -13,17 +18,51 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Container fluid className="login-container">
+
+      <Navbar className="main-navbar" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="#home">My Movies</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#logout">Logout</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>     
+    
+      <Card className="login-card">
+        <Card.Body>
+          <Card.Title className="text-center">Welcome to My Movies</Card.Title>
+          
+          <Form>
+            <Form.Group controlId="formUsername">
+              <Form.Label>Username</Form.Label>
+              <Form.Control 
+                type="text" 
+                onChange={e => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control 
+                className="mb-3" 
+                type="password" 
+                onChange={e => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <div className="submit-button-div"></div>
+              <Button 
+                className="submit-button" type="submit" onClick={handleSubmit}>Login
+              </Button>
+
+          </Form>
+
+        </Card.Body>
+
+      </Card>
+
+    </Container>
   );
 }
 
