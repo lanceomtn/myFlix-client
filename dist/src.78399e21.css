@@ -1,3 +1,88 @@
+.main-navbar {
+  background-color: #F44336;
+  color: #000;
+  height: 75px;
+}
+
+.login-card {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  height: 100vh;
+}
+.submit-button-div {
+  text-align: center;
+  margin: 0 auto;
+  width: 100px;
+  padding-bottom: 12px;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 100px;
+  background-color: #eee;
+  color: black;
+}
+.main-navbar {
+  background-color: #F44336;
+  color: #000;
+  height: 75px;
+}
+
+.register-card {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  height: 100vh;
+}
+.movie-container {
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+}
+
+.movie-card {
+  width: 100%;
+  margin: 20px;
+  background-color: #eee;
+}
+
+.card-image {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover;
+}
+.movie-view-container {
+  font-family: "Playfair Display", serif;
+  margin-top: 10px;
+  background-color: #eee;
+  width: 100%;
+  height: 100vh;
+}
+
+.movie-poster {
+  text-align: center;
+}
+
+.title, .genre, .description, .director, .year {
+  padding-left: 10px;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+}
+.main-navbar {
+  background-color: #F44336;
+  color: #000;
+  height: 75px;
+}
+
+.main-view {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+}
 .my-flix {
   color: steelblue;
 }
