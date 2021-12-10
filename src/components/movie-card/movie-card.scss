@@ -1,0 +1,17 @@
+.movie-container{
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+}
+
+.movie-card {
+  width: 100%;
+  margin: 20px;
+  background-color: #eee;
+}
+
+.card-image {
+  width: 100%!important;
+  height: 200px!important;
+  object-fit: cover;
+}
+

@@ -1,21 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button, Card, CardGroup, Container, } from 'react-bootstrap';
 
+import './movie-card.scss';
+import '../button/button.scss';
 
 export class MovieCard extends React.Component {
   render() {
     const { movie, onMovieClick } = this.props;
 
-    return <div className="movie-card" onClick={() => { onMovieClick(movie); }}>{movie.Title}</div>;
+    return (
+      <Container className="movie-container">
+        <CardGroup>
+          <Card className="movie-card text-center" >
+            <Card.Img className="card-image" variant="top" src={movie.ImagePath} />
+            <Card.Body>
+              <Card.Title>{movie.Title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{movie.Description}</Card.Subtitle>
+              <div className = "submit-button-div">
+                <Button 
+                  className="submit-button" onClick={() => onMovieClick(movie)} >Details
+                </Button>
+              </div>
+            </Card.Body>
+          </Card>
+        </CardGroup>
+      </Container>
+    );
   }
 }
 
 MovieCard.propTypes = {
-  //props object must include a movie object
   movie: PropTypes.shape({
-    //movie prop may contain a title, if it does then it must be a string
-    Title: PropTypes.string
+    Title: PropTypes.string.isRequired,
+    Year: PropTypes.number.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+    ImagePath: PropTypes.string.isRequired
   }).isRequired,
-  //props object mus contain onMovieClick and it must be a function
   onMovieClick: PropTypes.func.isRequired
 };
+
+
