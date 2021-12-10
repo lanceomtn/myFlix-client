@@ -1,4 +1,8 @@
 import React from 'react';
+import { Button, Card, CardGroup, Container, } from 'react-bootstrap';
+
+import './movie-view.scss';
+import '../button/button.scss'
 
 export class MovieView extends React.Component {
   
@@ -6,28 +10,36 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
     
     return (
-      <div className='movie-view'>
+      <Container className="movie-view-container">
         <div className="movie-poster">
           <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
-          <span className="label">Title: </span>
+          <span className="title">Title: </span>
           <span className="value">{movie.Title}</span>
         </div>
         <div className="movie-genre">
-          <span className="label">Genre: </span>
+          <span className="genre">Genre: </span>
           <span className="value">{movie.Genre.Name}</span>
         </div>
         <div className="movie-description">
-          <span className="label">Description: </span>
+          <span className="description">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
         <div className="movie-director">
-          <span className="label">Director: </span>
+          <span className="director">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-        <button onClick={() => { onBackClick(null); }}>Back</button>
-      </div>
+        <div className="movie-year">
+          <span className="year">Year: </span>
+          <span className="value">{movie.Year}</span>
+        </div>
+        <div className="submit-button-div">
+          <Button 
+            className="submit-button" onClick={() => { onBackClick(null); }} >Back
+          </Button>
+        </div>
+      </Container>    
     );
   }
 } 
