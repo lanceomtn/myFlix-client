@@ -15,6 +15,7 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
+    console.log(props);
     /* Send a request to the server for authentication */
     /* then call props on registered user(username) */
     props.onRegistration(username);
@@ -74,7 +75,7 @@ RegistrationView.propTypes = {
   register: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired
-    //birthday: PropTypes.string.isRequired
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired
   })
 };
