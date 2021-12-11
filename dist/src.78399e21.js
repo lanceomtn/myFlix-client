@@ -51115,6 +51115,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password, email, birthday);
+    console.log(props);
     /* Send a request to the server for authentication */
 
     /* then call props on registered user(username) */
@@ -51181,8 +51182,8 @@ RegistrationView.propTypes = {
   register: _propTypes.default.shape({
     username: _propTypes.default.string.isRequired,
     password: _propTypes.default.string.isRequired,
-    email: _propTypes.default.string.isRequired //birthday: PropTypes.string.isRequired
-
+    email: _propTypes.default.string.isRequired,
+    birthday: _propTypes.default.string.isRequired
   })
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./registration-view.scss":"components/registration-view/registration-view.scss","../button/button.scss":"components/button/button.scss"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
@@ -51356,7 +51357,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-poster"
       }, /*#__PURE__*/_react.default.createElement("img", {
-        src: movie.ImagePath
+        src: movie.ImagePath,
+        fluid: true,
+        crossOrigin: "true"
       })), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-title"
       }, /*#__PURE__*/_react.default.createElement("span", {
@@ -51470,7 +51473,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      register: null
     };
     return _this;
   }
@@ -51507,6 +51511,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onRegistration",
+    value: function onRegistration(register) {
+      this.setState({
+        register: register
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -51515,8 +51526,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user,
-          register = _this$state.register; //if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
-
+          register = _this$state.register;
+      if (!register) return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
+        onRegistration: function onRegistration(register) {
+          return _this3.onRegistration(register);
+        }
+      });
       /*if there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
 
       if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
@@ -51671,7 +51686,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63273" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62844" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
