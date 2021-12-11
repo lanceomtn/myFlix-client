@@ -1,13 +1,16 @@
 .movie-view-container {
+  width: 100%;
+  height: 100vh;
   font-family: "Playfair Display", serif;
   margin-top: 10px;
   background-color: #eee;
-  width: 100%;
-  height: 100vh;
 }
 
-.movie-poster {
-  text-align: center;
+.movie-poster img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 410px;
+  width: 270px;
 }
 
 .title, .genre,.description, .director, .year  {
