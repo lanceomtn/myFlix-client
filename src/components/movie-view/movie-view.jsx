@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardGroup, Container, } from 'react-bootstrap';
+import { Button, Container, } from 'react-bootstrap';
 
 import './movie-view.scss';
 import '../button/button.scss'
@@ -12,7 +12,7 @@ export class MovieView extends React.Component {
     return (
       <Container className="movie-view-container">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={movie.ImagePath}/>
         </div>
         <div className="movie-title">
           <span className="title">Title: </span>
@@ -35,9 +35,9 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Year}</span>
         </div>
         <div className="submit-button-div">
-          <Button 
-            className="submit-button" onClick={() => { onBackClick(null); }} >Back
-          </Button>
+        <Button 
+          className="submit-button" onClick={() => { onBackClick(null); }} >Back
+        </Button>
         </div>
       </Container>    
     );
