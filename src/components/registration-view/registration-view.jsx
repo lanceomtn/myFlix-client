@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, Card, Container, Form } from 'react-bootstrap';
+import axios from 'axios';
+import { BrowserRouter as Router, } from 'react-router-dom';
 
 import './registration-view.scss';
 import '../button/button.scss';
@@ -14,14 +16,26 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
-    console.log(props);
-    /* Send a request to the server for authentication */
-    /* then call props on registered user(username) */
-    props.onRegistration(username);
+    console.log(username, name, password, email, birthday);
+    axios.post('https://https://mymoviesproject.herokuapp.com/user', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+    })
+    .catch(e => {
+      console.log('error registering the user')
+    });
   };
 
   return (
+    <Router>
+    
     <Container fluid className="register-container">
     
       <Navbar className="main-navbar" expand="lg">
@@ -67,7 +81,9 @@ export function RegistrationView(props) {
         </Form>  
         </Card.Body>
       </Card>
-    </Container>  
+    </Container> 
+
+    </Router> 
   );
 }
 

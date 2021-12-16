@@ -1,11 +1,33 @@
 import React from 'react';
+import axios from 'axios';
 import { Button, Container, } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 import './movie-view.scss';
 import '../button/button.scss'
 
 export class MovieView extends React.Component {
   
+  constructor(props) {
+    super(props);
+}
+
+addFavoriteMovie() {
+  const token = localStorage.getItem('token');
+  const username = localStorage.getItem('user');
+
+  axios.post(`https://mymoviesproject.herokuapp.com/user/favorites/${username}/movies/${this.props.movie._id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'POST'
+  })
+      .then(response => {
+          alert(`Added to Favorites List`)
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+};
+
   render() {
     const { movie, onBackClick } = this.props;
     
@@ -20,7 +42,7 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-genre">
           <span className="genre">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
+          <Link to={`/genres/${movie.Genre.Name}`} className="value">{movie.Genre.Name}</Link>
         </div>
         <div className="movie-description">
           <span className="description">Description: </span>
@@ -28,7 +50,7 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-director">
           <span className="director">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
+          <Link to={`/directors/${movie.Director.Name}`} className="value">{movie.Director.Name}</Link>
         </div>
         <div className="movie-year">
           <span className="year">Year: </span>
@@ -39,6 +61,9 @@ export class MovieView extends React.Component {
           className="submit-button" onClick={() => { onBackClick(null); }} >Back
         </Button>
         </div>
+        <Button>
+          className="submit-button" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)} >Add to Favorites
+        </Button>
       </Container>    
     );
   }
