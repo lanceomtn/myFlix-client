@@ -8,12 +8,11 @@ import '../button/button.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;  //do I still need onMovieClick?
+    const { movie, onMovieClick } = this.props;  //using onMovieClick in button
 
     return (
       <Container className="movie-container">
-        <CardGroup>
-          <Card className="movie-card text-center" >
+        <Card className="movie-card text-center" >
             <Card.Img className="card-image" variant="top" src={movie.ImagePath} />
             <Card.Body>
               <Card.Title>{movie.Title}</Card.Title>
@@ -27,8 +26,7 @@ export class MovieCard extends React.Component {
               </Link>
             </Card.Body>
           </Card>
-        </CardGroup>
-      </Container>
+        </Container>
     );
   }
 }

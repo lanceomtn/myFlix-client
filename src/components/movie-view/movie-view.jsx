@@ -42,7 +42,9 @@ addFavoriteMovie() {
         </div>
         <div className="movie-genre">
           <span className="genre">Genre: </span>
-          <Link to={`/genres/${movie.Genre.Name}`} className="value">{movie.Genre.Name}</Link>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre</Button>
+          </Link>
         </div>
         <div className="movie-description">
           <span className="description">Description: </span>
@@ -50,20 +52,18 @@ addFavoriteMovie() {
         </div>
         <div className="movie-director">
           <span className="director">Director: </span>
-          <Link to={`/directors/${movie.Director.Name}`} className="value">{movie.Director.Name}</Link>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
         </div>
         <div className="movie-year">
           <span className="year">Year: </span>
           <span className="value">{movie.Year}</span>
         </div>
-        <div className="submit-button-div">
-        <Button 
-          className="submit-button" onClick={() => { onBackClick(null); }} >Back
-        </Button>
+        <div className="movie-button-div">
+          <Button className="submit-button" onClick={() => { onBackClick(null); }}>Back</Button>
+          <Button className="submit-button" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}>Add to Favorites</Button>
         </div>
-        <Button>
-          className="submit-button" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)} >Add to Favorites
-        </Button>
       </Container>    
     );
   }

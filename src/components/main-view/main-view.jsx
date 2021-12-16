@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 
+import { NavbarView } from "../navbar-view/navbar-view";
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -16,24 +17,34 @@ export class MainView extends React.Component {
     super(); //initializes components state
     this.state = {  
       movies: [],
-      selectedMovie: null,
-      user: null,
-      register: null
+      user: null
+      //register: null
     };
   }
     
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-          this.setState({
-            user: localStorage.getItem('user')
-          });
-          this.getMovies(accessToken);
-        }
-      }
+      this.setState({
+      user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  }
 
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({ 
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+  
   getMovies(token) {
-    axios.get('https://mymoviesproject.herokuapp.com//movies', {
+    axios.get('https://mymoviesproject.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
       })
       .then(response => {
@@ -47,84 +58,76 @@ export class MainView extends React.Component {
      });
   }  
 
-   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({ 
-      user: authData.user.Username
-    });
-  
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
-  }
-  
-  /* When a user logs out sets user state to null */
+  /* When a user logs out sets user state to null
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.setState({
       user: null
     });
-  }
+    window.open("/", "_self");
+  }  */
   
-  /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
-  } */
-
-  /* not sure if I need this I think registration will be handled below 
-  onRegistration(registration) {
-    this.setState({
-        registration,
-    });
-} */
- 
 render() {
-    const { movies, selectedMovie, user, register } = this.state;
-    
-    return (
-    
+  const { movies, user } = this.state;
+          
+  return (
     <Router>  
-
-
-    <div className="main-view">
-        <Navbar className="main-navbar" expand="lg" >
-          <Container fluid>
-            <Navbar.Brand href="#home">My Movies</Navbar.Brand>
-             <Nav className="me-auto">
-               <Nav.Link href="#movies">Movies</Nav.Link>
-               <Nav.Link href="#user">Profile</Nav.Link>
-               <Nav.Link href="#logout">Logout</Nav.Link>
-             </Nav>
-           </Container>
-         </Navbar>
-      
+      <NavbarView user={user}/>
         <Container>
-          {selectedMovie
-            ? (
-              <Row className="justify-content-lg-center">
-                <Col md={12} >
-                  <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+          <Row className="main-view justify-content-md-center">
+            <Route exact path="/" render={() => {
+              if (!user) return <Col>
+                <LoginView movies={movies}
+                  onLoggedIn={user => this.onLoggedIn(user)} />
+              </Col>
+              if (movies.length === 0) return <div className="main-view" />
+                return movies.map(m => (
+                <Col md={3} key={m.id}>
+                  <MovieCard movie={m} />
                 </Col>
-              </Row>
-               )
-              : (
-                <Row className="justify-content-lg-center">
-                  { movies.map(movie => (
-                    <Col md={4} >
-                      <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
-                    </Col>
-                    ))
-                  }
-                </Row>
-              )  
-          }
+                ))
+            }} />
+            <Route path="/register" render={() => {  //i don't think I have a registration endpoint - only users
+              if (user) return <Redirect to="/" />
+              return <Col lg={8} md={8}>
+                <RegistrationView />
+              </Col>
+            }} />
+            <Route path="movies/:id" render={({ match, history }) => {
+              return <Col md={8}>
+                <MovieView movie={movies.find(m => m.id === match.params.id)} onBackClick={() => history.goBack()} />
+              </Col>
+            }} />
+            <Route path="/director/:Name" //I think this is my path to directors
+              render={({match, history}) => {
+                return <Col>
+                <DirectorView movie={movies.find(m => m._id === match.params.id )} onBackClick={() => history.goBack()} />
+                </Col>
+            }} />
+            <Route path="/genre/:Name" //I think this is my path to genre
+              render={({match, history}) => {
+                return <Col>
+                <GenreView movie={movies.find(m => m._id === match.params.id )} onBackClick={() => history.goBack()} />
+                </Col>
+            }} />
+            <Route path={`/users/${user}`}
+              render={({match, history}) => {
+                if (!user) return <Redirect to="/" />
+                  return <Col>
+                    <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()}/>
+                  </Col>
+            }} />
+            <Route path={`/user-update/${user}`}  //I dont have a user-update endpoint
+              render={({match, history}) => {
+                if (!user) return <Redirect to="/" />
+                return <Col>
+                  <UserUpdate user={user} onBackClick={() => history.goBack()}/>       
+                </Col>
+              }} />
+          </Row>
         </Container>
-      </div>
-      </Router>
-    );
-  }
+    </Router>
+  );
+}
 }
