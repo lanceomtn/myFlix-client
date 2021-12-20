@@ -23,13 +23,29 @@
   background-color: #eee;
   color: black;
 }
-.register-card {
+
+.delete-button {
+  margin-top: 20px;
+  width: 100px;
+  background-color: red;
+  color: black;
+}
+.registration-form {
+  padding: 10px;
   background: #9fc5e8;
   width: 100%;
   display: inline-block;
   font-family: "Playfair Display", serif;
   height: 100vh;
 }
+
+/*.register-card {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  height: 100vh;
+} */
 .movie-container {
   display: inline-block;
   font-family: "Playfair Display", serif;
@@ -60,6 +76,20 @@
   color: black;
   font-size: 20px;
   font-weight: 500;
+}
+.user-profile {
+  padding: 10px;
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+}
+
+.update-profile {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
 }
 .main-view {
   background: #9fc5e8;
