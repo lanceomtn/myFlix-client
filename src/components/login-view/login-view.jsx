@@ -16,51 +16,51 @@ export function LoginView(props) {
   const [ passwordErr, setPasswordErr ] = useState('');
 
 // validate user inputs
-const validate = () => {
-  let isReq = true;
-  if(!username){
-   setUsernameErr('Username Required');
-   isReq = false;
-  }else if(username.length < 2){
-   setUsernameErr('Username must be 2 characters long');
-   isReq = false;
-  }
-  if(!password){
-   setPasswordErr('Password Required');
-   isReq = false;
-  }else if(password.length < 6){
-   setPassword('Password must be 6 characters long');
-   isReq = false;
+  const validate = () => {
+    let isReq = true;
+    if(!username){
+    setUsernameErr('Username Required');
+    isReq = false;
+    }else if(username.length < 2){
+    setUsernameErr('Username must be 2 characters long');
+    isReq = false;
+    }
+    if(!password){
+    setPasswordErr('Password Required');
+    isReq = false;
+    }else if(password.length < 6){
+    setPassword('Password must be 6 characters long');
+    isReq = false;
+    }
+
+    return isReq;
   }
 
-  return isReq;
-}
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const isReq = validate();
-  if(isReq) {
-    /* Send request to the server for authentication */
-    axios.post('https://mymoviesproject.herokuapp.com/login', {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isReq = validate();
+    if(isReq) {
+      /* Send request to the server for authentication */
+      axios.post('https://mymoviesproject.herokuapp.com/login', {
         Username: username,
         Password: password
-    })
-    .then(response =>{
+      })
+      .then(response =>{
         const data = response.data;
         props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log('no such user')
-    });
-  }
-};
+      })
+      .catch(e => {
+        alert('no such user')
+      });
+    }
+  };
 
-  return (
-    
-    <Router>
-
-     <NavbarView/>   
-    
+  //render() {
+    //const { user } = this.state;
+       
+    return (
+    <Router>  
+      {/*<NavbarView user={user}/>*/} 
       <Form className="login-form">
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
@@ -76,13 +76,15 @@ const handleSubmit = (e) => {
           {passwordErr && <p>{passwordErr}</p>} 
         </Form.Group>
 
-        <div className="submit-button-div"></div>
-          <Button 
-            className="submit-button" type="submit" onClick={handleSubmit}>Login
-          </Button>
-        </Form>
-
+        <div className="submit-button-div">
+          <Button className="submit-button" type="submit" onClick={handleSubmit}>Login</Button>
+          <p>New Users Register Here</p>
+          <Button className="submit-button"> <Nav.Link href="/register">Register</Nav.Link></Button>
+        </div>  
+      </Form>
+    
     </Router>
   );
+  //}
 }
 
