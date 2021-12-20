@@ -8,7 +8,7 @@ import '../button/button.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;  //using onMovieClick in button
+    const { movie } = this.props;
 
     return (
       <Container className="movie-container">
@@ -16,11 +16,11 @@ export class MovieCard extends React.Component {
             <Card.Img className="card-image" variant="top" src={movie.ImagePath} />
             <Card.Body>
               <Card.Title>{movie.Title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{movie.Description}</Card.Subtitle>
+              <Card.Subtitle>{movie.Description}</Card.Subtitle>
               <Link to={`/movies/${movie._id}`} >
               <div className = "submit-button-div">
                 <Button 
-                  className="submit-button" onClick={() => onMovieClick(movie)} >Details
+                  className="submit-button" >Details
                 </Button>
               </div>
               </Link>
@@ -31,11 +31,11 @@ export class MovieCard extends React.Component {
   }
 }
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  MovieCard.propTypes = {
+    movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Year: PropTypes.number.isRequired,
-    Description: PropTypes.string.isRequired,
+    //Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired
     }),
@@ -44,7 +44,7 @@ MovieCard.propTypes = {
     }),
     ImagePath: PropTypes.string.isRequired
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
-};
+   
+};  
 
 
