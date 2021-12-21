@@ -7,21 +7,22 @@ import "./director-view.scss";
 import '../button/button.scss'
 
  export function DirectorView (props)  {
-  const { director } = props; 
+  const { Director, onBackClick } = props; 
   
+
   return (
     <div className="director-view">
       <div className="director-name">
         <span className="label">Name: </span>
-        <span className="value">{director.Name}</span> 
+        <span className="value">{Director.Name}</span>
       </div>
       <div className="director-bio">
         <span className="label">Biography: </span>
-        <span className="value">{director.Bio}</span>     
+        <span className="value">{Director.Bio}</span>     
       </div>  
       <div className="director-birthyear">
         <span className="label">Year of Birth: </span>
-        <span className="value">{director.Birth}</span>      
+        <span className="value">{Director.Birth}</span>      
       </div>
       <Button className="submit-button" onClick={() => { onBackClick(null); }}>Back</Button>
     </div>

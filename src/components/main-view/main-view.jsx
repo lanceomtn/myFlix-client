@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap'
 
-import { NavbarView } from "../navbar-view/navbar-view";
+import { NavbarView } from '../navbar-view/navbar-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -60,19 +60,6 @@ export class MainView extends React.Component {
           console.log(error);
      });
   }  
-
-  
-
-  
-  //When a user logs out sets user state to null
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
-    window.open("/", "_self");
-  }  
   
   render() {
     const { movies, user } = this.state;
@@ -101,24 +88,20 @@ export class MainView extends React.Component {
                 </Col>
               }} />
               <Route path="/movies/:id" render={({ match, history }) => {
-                console.log(movies);
-                console.log(match.params.id);
                 return <Col md={8}>
-                  <MovieView movie={movies.find(m => m._id === match.params.id)} onBackClick={() => history.goBack()} />
+                <MovieView movie={movies.find(m => m._id === match.params.id)} onBackClick={() => history.goBack()} />
                 </Col>
               }} />
-              <Route path="/director/:Name"
+              <Route path="/directors/:Name"
                 render={({match, history}) => {
                   return <Col>
-                  <DirectorView movie={movies.find(m => m._id === match.params.id )} onBackClick={() => history.goBack()} />
+                  <DirectorView Director={movies.find(m => m.Director.Name === match.params.id )} onBackClick={() => history.goBack()} />
                   </Col>
               }} />
               <Route path="/genres/:Name"
                 render={({match, history}) => {
-                  console.log(match.params.Name)
-                  console.log
                   return <Col>
-                  <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name )} onBackClick={() => history.goBack()} />
+                  <GenreView Genre={movies.find(m => m.Genre.Name === match.params.Name )} onBackClick={() => history.goBack()} />
                   </Col>
               }} />
               <Route path={`/users/${user}`}
