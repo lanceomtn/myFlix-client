@@ -32,8 +32,9 @@ export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
 
-    <NavbarView user={user}/>
-    
+    {/*<NavbarView user={user}/> */}
+    console.log(movie);
+    console.log(this.props)
     return (
       <Container fluid className="movie-view-container" align="center">
           <div className="movie-poster">

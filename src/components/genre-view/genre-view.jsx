@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 
-import "./genre-view.scss";
+//import "./genre-view.scss";
 import '../button/button.scss'
 
 export function GenreView (props) {
   const { genre } = props
-   
+  
+  console.log(props)
     return (
       <Row className="genre-view">
         <Col>

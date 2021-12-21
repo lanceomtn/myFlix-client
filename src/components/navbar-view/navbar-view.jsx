@@ -40,7 +40,7 @@ return(
               <Nav.Link href="/register">Register</Nav.Link>
             )}
             {isAuth() && (
-              <Button variant="link" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+              <Button variant="link" onClick={() => {onLoggedOut() }}>Logout</Button>
             )}
             </Nav>
           </Navbar.Collapse>  

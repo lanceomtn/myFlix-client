@@ -9,6 +9,8 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { GenreView } from '../genre-view/genre-view';
+import { DirectorView} from '../director-view/director-view';
 
 import "./main-view.scss";
 
@@ -59,6 +61,9 @@ export class MainView extends React.Component {
      });
   }  
 
+  
+
+  
   //When a user logs out sets user state to null
   onLoggedOut() {
     localStorage.removeItem('token');
@@ -95,9 +100,11 @@ export class MainView extends React.Component {
                 <RegistrationView />
                 </Col>
               }} />
-              <Route path="movies/:id" render={({ match, history }) => {
+              <Route path="/movies/:id" render={({ match, history }) => {
+                console.log(movies);
+                console.log(match.params.id);
                 return <Col md={8}>
-                  <MovieView movie={movies.find(m => m.id === match.params.id)} onBackClick={() => history.goBack()} />
+                  <MovieView movie={movies.find(m => m._id === match.params.id)} onBackClick={() => history.goBack()} />
                 </Col>
               }} />
               <Route path="/director/:Name"
@@ -106,10 +113,12 @@ export class MainView extends React.Component {
                   <DirectorView movie={movies.find(m => m._id === match.params.id )} onBackClick={() => history.goBack()} />
                   </Col>
               }} />
-              <Route path="/genre/:Name"
+              <Route path="/genres/:Name"
                 render={({match, history}) => {
+                  console.log(match.params.Name)
+                  console.log
                   return <Col>
-                  <GenreView movie={movies.find(m => m._id === match.params.id )} onBackClick={() => history.goBack()} />
+                  <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name )} onBackClick={() => history.goBack()} />
                   </Col>
               }} />
               <Route path={`/users/${user}`}
