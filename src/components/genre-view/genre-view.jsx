@@ -7,12 +7,12 @@ import '../button/button.scss';
 import './genre-view.scss';
 
 export function GenreView (props) {
-  const { Genre, onBackClick,  } = props
+  const { Genre, onBackClick } = props
   
   return (
     <Row className="genre-view">
       <Col>
-        <div className="genre-name">
+        <div className="movie-genre">
           <span className="label">Genre: </span>
           <span className="value">{Genre.Name}</span>
         </div>
