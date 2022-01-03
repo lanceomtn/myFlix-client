@@ -111,7 +111,7 @@ export class MainView extends React.Component {
                     <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()}/>
                   </Col>
               }} />
-              <Route path={`/user-update/${user}`}  //I dont have a user-update endpoint
+              <Route path={`/user-update/${user}`}
                 render={({match, history}) => {
                   if (!user) return <Redirect to="/" />
                   return <Col>
