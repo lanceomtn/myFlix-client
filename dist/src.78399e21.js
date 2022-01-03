@@ -54209,8 +54209,9 @@ function LoginView(props) {
     className: "submit-button",
     type: "submit",
     onClick: handleSubmit
-  }, "Login"), /*#__PURE__*/_react.default.createElement("p", null, "New Users Register Here"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-    className: "submit-button"
+  }, "Login"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("p", null, "New Users Register Here"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+    className: "submit-button",
+    type: "submit"
   }, " ", /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     href: "/register"
   }, "Register"))))); //}
@@ -54540,7 +54541,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           movie = _this$props.movie,
           onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
-        className: "movie-view-container"
+        fluid: true,
+        className: "movie-container"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-poster"
       }, /*#__PURE__*/_react.default.createElement("img", {
@@ -56931,7 +56933,7 @@ function GenreView(props) {
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
     className: "genre-view"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "genre-name"
+    className: "movie-genre"
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "label"
   }, "Genre: "), /*#__PURE__*/_react.default.createElement("span", {
@@ -56982,10 +56984,10 @@ function DirectorView(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "director-view"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "director-name"
+    className: "movie-director"
   }, /*#__PURE__*/_react.default.createElement("span", {
-    className: "label"
-  }, "Name: "), /*#__PURE__*/_react.default.createElement("span", {
+    className: "director"
+  }, "Director: "), /*#__PURE__*/_react.default.createElement("span", {
     className: "value"
   }, Director.Name)), /*#__PURE__*/_react.default.createElement("div", {
     className: "director-bio"
@@ -57236,8 +57238,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           }));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-        path: "/user-update/".concat(user) //I dont have a user-update endpoint
-        ,
+        path: "/user-update/".concat(user),
         render: function render(_ref5) {
           var match = _ref5.match,
               history = _ref5.history;
@@ -57355,7 +57356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64535" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
