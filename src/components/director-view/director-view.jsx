@@ -12,8 +12,8 @@ import '../button/button.scss'
 
   return (
     <div className="director-view">
-      <div className="director-name">
-        <span className="label">Name: </span>
+      <div className="movie-director">
+        <span className="director">Director: </span>
         <span className="value">{Director.Name}</span>
       </div>
       <div className="director-bio">
