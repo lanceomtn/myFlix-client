@@ -33,12 +33,6 @@ return(
             {isAuth() && ( 
               <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
             )} 
-            {isAuth() && ( 
-              <Nav.Link href="/">Log In</Nav.Link>
-            )}
-            {isAuth() && ( 
-              <Nav.Link href="/register">Register</Nav.Link>
-            )}
             {isAuth() && (
               <Button variant="link" onClick={() => {onLoggedOut() }}>Logout</Button>
             )}
