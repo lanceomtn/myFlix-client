@@ -80,8 +80,7 @@ export function LoginView(props) {
           <Button className="submit-button" type="submit" onClick={handleSubmit}>Login</Button>
           <br />
           <br />
-          <p>New Users Register Here</p>
-          <Button className="submit-button" type="submit"> <Nav.Link href="/register">Register</Nav.Link></Button>
+          <Button className="register-button" type="submit"> <Nav.Link href="/register">Register</Nav.Link></Button>
         </div>  
       </Form>
     
