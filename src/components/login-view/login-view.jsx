@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Form, Button, Container } from 'react-bootstrap';
+import { Nav, Form, Button, } from 'react-bootstrap';
 import axios from 'axios';
-import { NavbarView } from "../navbar-view/navbar-view"; 
 
 import './login-view.scss';
 import '../button/button.scss';
