@@ -83,19 +83,19 @@ export class MainView extends React.Component {
                 ))
               }} />
               <Route path="/register" render={() => {  
-                return <Col lg={8} md={8}>
+                return <Col>
                 <RegistrationView />
                 </Col>
               }} />
               <Route path="/movies/:id" render={({ match, history }) => {
-                return <Col md={8}>
+                return <Col>
                 <MovieView movie={movies.find(m => m._id === match.params.id)} onBackClick={() => history.goBack()} />
                 </Col>
               }} />
               <Route path="/directors/:Name"
                 render={({match, history}) => {
                   return <Col>
-                  <DirectorView Director={movies.find(m => m.Director.Name === match.params.id )} onBackClick={() => history.goBack()} />
+                  <DirectorView Director={movies.find(m => m.Director.Name === match.params.Name )} onBackClick={() => history.goBack()} />
                   </Col>
               }} />
               <Route path="/genres/:Name"
