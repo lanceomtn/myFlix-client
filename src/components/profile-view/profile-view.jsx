@@ -86,12 +86,12 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
       
-    axios.delete(`https://mymoviesproject.herokuapp.com/users/${username}/movies/${movie._id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+    axios.delete(`https://mymoviesproject.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+          method: 'DELETE'
       })
     .then((response) => {
-      console.log(response);
-        this.componentDidMount();
+      alert(`Removed From Favorites List`)
     })
     .catch(function (error) {
       console.log(error);
@@ -225,33 +225,29 @@ export class ProfileView extends React.Component {
             </Card>
                     
             <Card>
-              <Row style={{ marginTop: "20px" }}>
-                <Col>
-                  <h4>Favorite Movies</h4>
-               </Col>
-              </Row>
-              <Row>
+              <Row className="favorite-container">
                 <Col>
                   <Card.Body>
                     {FavoriteMovies.length === 0 && (
-                      <div className="text-center">No Favorite Movie</div>
+                      <div className="text-center">No Favorite Movies</div>
                     )}
-                    <Row className="favorite-container">
+                    <Row>
                       {FavoriteMovies.length > 0 &&
                         movies.map((movie) => {
                         if (movie._id === FavoriteMovies.find((fav) => fav === movie._id)) {
                           return (
-                            <Card className="favorite-movie card-content" key={movie._id} >
+                            
+                            <Card className="favorite-movies" key={movie._id} >
                               <Card.Img
-                                className="fav-poster"
+                                className="favorite-poster"
                                 variant="top"
                                 src={movie.ImagePath}
                               />
-                              <Card.Body style={{ backgroundColor: "black" }}>
+                              <Card.Body>
                                 <Card.Title className="movie_title">
                                   {movie.Title}
                                   </Card.Title>
-                                < Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)} > Remove </Button>
+                                < Button className="delete-button" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)} > Remove from Favorites</Button>
                               </Card.Body>
                             </Card>
                           );
