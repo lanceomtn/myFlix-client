@@ -29,6 +29,13 @@
   background-color: red;
   color: black;
 }
+
+.register-button {
+  margin-top: 20px;
+  width: 150px;
+  background-color: yellow;
+  color: black;
+}
 .registration-form {
   padding: 10px;
   background: #9fc5e8;
@@ -58,7 +65,7 @@
 .movie-container {
   width: 100%;
   margin-bottom: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .movie-poster img {
@@ -87,7 +94,27 @@
   display: inline-block;
   font-family: "Playfair Display", serif;
 }
+
+.favorite-movies img {
+  padding: 5px;
+  height: 410px;
+  width: 270px;
+  background: #9fc5e8;
+}
+
+.favorite-container {
+  padding: 10px;
+  background: #9fc5e8;
+}
 .genre-view {
+  padding: 10px;
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  height: 100vh;
+}
+.director-view {
   padding: 10px;
   background: #9fc5e8;
   width: 100%;
