@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { setMovies } from '../../actions/actions'
+import moviesList from '../movies-list/movies-list'
 import { Container, Row, Col } from 'react-bootstrap'
 
 import { NavbarView } from '../navbar-view/navbar-view';
@@ -50,20 +53,18 @@ export class MainView extends React.Component {
     axios.get('https://mymoviesproject.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
       })
-      .then(response => {
-      // Assign the result to the state
-      this.setState({
-      movies: response.data
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-     });
-  }  
+      .then((response) => {
+        this.props.setMovie(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   
   render() {
-    const { movies, user } = this.state;
-          
+    let { movies } = this.props;
+    let { user } = this.state;
+
     return (
       <Router>  
         <NavbarView user={user}/>  
@@ -124,3 +125,9 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies}
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
