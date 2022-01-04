@@ -1,14 +1,12 @@
-.main-navbar {
-  background-color: #F44336;
-  color: #000;
-  height: 75px;
-}
-.login-form {
-  background: #9fc5e8;
-  width: 100%;
+.movie-container {
   display: inline-block;
   font-family: "Playfair Display", serif;
-  height: 100vh;
+}
+
+.movie-card {
+  width: 100%;
+  margin: 20px;
+  background-color: #eee;
 }
 .submit-button-div {
   text-align: center;
@@ -36,6 +34,18 @@
   background-color: yellow;
   color: black;
 }
+.main-navbar {
+  background-color: #F44336;
+  color: #000;
+  height: 75px;
+}
+.login-form {
+  background: #9fc5e8;
+  width: 100%;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  height: 100vh;
+}
 .registration-form {
   padding: 10px;
   background: #9fc5e8;
@@ -52,16 +62,6 @@
   font-family: "Playfair Display", serif;
   height: 100vh;
 } */
-.movie-container {
-  display: inline-block;
-  font-family: "Playfair Display", serif;
-}
-
-.movie-card {
-  width: 100%;
-  margin: 20px;
-  background-color: #eee;
-}
 .movie-container {
   width: 100%;
   margin-bottom: 20px;
