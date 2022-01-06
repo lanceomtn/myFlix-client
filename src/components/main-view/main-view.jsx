@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { setMovies } from '../../actions/actions'
-import moviesList from '../movies-list/movies-list'
+import MoviesList from '../movies-list/movies-list'
 import { Container, Row, Col } from 'react-bootstrap'
 
 import { NavbarView } from '../navbar-view/navbar-view';
@@ -52,13 +52,14 @@ export class MainView extends React.Component {
   getMovies(token) {
     axios.get('https://mymoviesproject.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
-      })
-      .then((response) => {
-        this.props.setMovie(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    })
+    .then(response => {
+
+      this.props.setMovies(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   
   render() {
@@ -76,13 +77,13 @@ export class MainView extends React.Component {
                   <LoginView movies={movies}
                 onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
-                if (movies.length === 0) return <div className="main-view" />
-                  return movies.map(m => (
-                  <Col lg={4} md={3} key={m.id}>
-                  <MovieCard movie={m} />
-                  </Col>
-                ))
-              }} />
+                if (movies.length === 0) return <div className="main-view" />;
+                //movie filter 
+                return <MoviesList movies={movies} />; 
+                
+               }}
+             />
+             
               <Route path="/register" render={() => {  
                 return <Col>
                 <RegistrationView />
@@ -127,7 +128,7 @@ export class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies}
+  return { movies: state.movies }
 }
 
 export default connect(mapStateToProps, { setMovies } )(MainView);
