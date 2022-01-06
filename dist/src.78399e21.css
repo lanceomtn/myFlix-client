@@ -1,12 +1,18 @@
 .movie-container {
+  padding-top: 20px;
   display: inline-block;
-  font-family: "Playfair Display", serif;
 }
 
 .movie-card {
   width: 100%;
-  margin: 20px;
-  background-color: #eee;
+  height: auto;
+  overflow: hidden;
+  background-color: #9fc5e8;
+}
+
+.card-image {
+  height: 410px;
+  width: 270px;
 }
 .submit-button-div {
   text-align: center;
@@ -40,8 +46,9 @@
   height: 75px;
 }
 .login-form {
+  padding-top: 20px;
   background: #9fc5e8;
-  width: 100%;
+  width: 25%;
   display: inline-block;
   font-family: "Playfair Display", serif;
   height: 100vh;
@@ -49,7 +56,7 @@
 .registration-form {
   padding: 10px;
   background: #9fc5e8;
-  width: 100%;
+  width: 25%;
   display: inline-block;
   font-family: "Playfair Display", serif;
   height: 100vh;
@@ -63,9 +70,9 @@
   height: 100vh;
 } */
 .movie-container {
-  width: 100%;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
+  max-width: 300px;
 }
 
 .movie-poster img {
@@ -99,12 +106,15 @@
   padding: 5px;
   height: 410px;
   width: 270px;
-  background: #9fc5e8;
+  background: black;
 }
 
 .favorite-container {
-  padding: 10px;
   background: #9fc5e8;
+}
+
+.favorite-card-body {
+  background: #eee;
 }
 .genre-view {
   padding: 10px;
@@ -114,6 +124,14 @@
   font-family: "Playfair Display", serif;
   height: 100vh;
 }
+
+.movie-genre {
+  padding: 10px;
+}
+
+.genre-description {
+  max-width: 600px;
+}
 .director-view {
   padding: 10px;
   background: #9fc5e8;
@@ -121,6 +139,10 @@
   display: inline-block;
   font-family: "Playfair Display", serif;
   height: 100vh;
+}
+
+.director-bio {
+  padding: 10px;
 }
 .main-view {
   background: #9fc5e8;
