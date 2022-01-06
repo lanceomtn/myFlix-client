@@ -5,6 +5,9 @@ import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./profile-view.scss";
 import '../button/button.scss'
 
+import { setUser, updateUser } from "../../actions/actions";
+import { connect } from "react-redux";
+
 export class ProfileView extends React.Component {
   constructor() {
     super();
@@ -79,11 +82,11 @@ export class ProfileView extends React.Component {
   };
 
   //Remove a favorite movie
-  onRemoveFavorite() {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-      
-    axios.delete(`https://mymoviesproject.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {
+  onRemoveFavorite(e, movie) {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    console.log("movie", movie)  
+    axios.delete(`https://mymoviesproject.herokuapp.com/users/${username}/movies/${movie._id}`, {
           headers: { Authorization: `Bearer ${token}` },
           method: 'DELETE'
       })
@@ -240,11 +243,14 @@ export class ProfileView extends React.Component {
                                 variant="top"
                                 src={movie.ImagePath}
                               />
-                              <Card.Body>
-                                <Card.Title className="movie_title">
+                              <Card.Body className="favorite-card-body">
+                                <Card.Title className="movie-title">
                                   {movie.Title}
                                   </Card.Title>
-                                < Button className="delete-button" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)} > Remove from Favorites</Button>
+                                < Button className="delete-button" value={movie._id} 
+                                  onClick={(e) => this.onRemoveFavorite(e, movie)}
+                                   > Remove from Favorites
+                                </Button>
                               </Card.Body>
                             </Card>
                           );
@@ -255,11 +261,6 @@ export class ProfileView extends React.Component {
                 </Col>
               </Row>
             </Card>
-                          
-            <div className="movie-button-div">
-              <Button className="submit-button" onClick={() => { onBackClick(null); }}>Home</Button>
-            </div>
-                    
       </Container>
     );
   }
@@ -268,8 +269,8 @@ export class ProfileView extends React.Component {
 let mapStateToProps = state => {
     return {
         user: state.user,
-        //movies: state.movies
+        movies: state.movies
     }
 }
 
-//export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
+export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
