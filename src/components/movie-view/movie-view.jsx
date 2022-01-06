@@ -45,7 +45,7 @@ export class MovieView extends React.Component {
             <span className="value">{movie.Description}</span>
           </div>
           <div className="movie-genre">
-            <span className="label">Genre: </span>
+            <span className="genre">Genre: </span>
               <Link to={`/genres/${movie.Genre.Name}`}>
                 <span className="value">{movie.Genre.Name}</span>
               </Link>
@@ -62,8 +62,6 @@ export class MovieView extends React.Component {
           </div>
           <div className="movie-button-div">
             <Button className="submit-button" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}>Add to Favorites</Button>
-            <br />
-            <Button className="submit-button" onClick={() => { onBackClick(null); }}>Back</Button>
           </div>
       </Container>
     );
