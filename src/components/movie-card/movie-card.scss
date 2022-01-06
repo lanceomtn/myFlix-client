@@ -1,13 +1,16 @@
-.movie-container{
+.movie-container {
+  padding-top: 20px;
   display: inline-block;
-  font-family: "Playfair Display", serif;
 }
 
 .movie-card {
   width: 100%;
-  margin: 20px;
-  background-color: #eee;
+  height: auto;
+  overflow: hidden;
+  background-color: #9fc5e8;
 }
 
-
-
+.card-image {
+  height: 410px;
+  width: 270px;
+}
