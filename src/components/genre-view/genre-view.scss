@@ -1,4 +1,4 @@
-.director-view {
+.genre-view {
   padding: 10px;
   background: #9fc5e8;
   width: 100%;
@@ -7,6 +7,10 @@
   height: 100vh;
 }
 
-.director-bio{
+.movie-genre{
   padding: 10px;
+}
+
+.genre-description{
+  max-width: 600px;
 }

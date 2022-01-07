@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import axios from 'axios';
 import { BrowserRouter as Router, } from 'react-router-dom';
 
@@ -43,17 +43,17 @@ export function RegistrationView(props) {
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" value={username} placeholder="Username must be at least # characters" onChange={e => setUsername(e.target.value)} />
         </Form.Group>
-
+        <br />
         <Form.Group controlId="registerPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" value={password} placeholder="Password must be at least # characters" onChange={e => setPassword(e.target.value)} />
         </Form.Group>
-
+        <br />
         <Form.Group controlId="registerEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" value={email} placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
-
+        <br />
         <Form.Group controlId="registerBirthday">
           <Form.Label>Birthday</Form.Label>
           <Form.Control className="mb-3" type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
